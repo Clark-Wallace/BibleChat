@@ -78,6 +78,7 @@ biblechat-ui/.svelte-kit/
 biblechat-ui/build/
 biblechat-ui/.env
 biblechat-ui/.env.*
+!biblechat-ui/.env.example
 biblechat-ui/node_modules/
 
 # Vite

@@ -1,0 +1,43 @@
+{
+  "name": "@biblechat/core",
+  "version": "1.0.0",
+  "description": "Standalone BibleChat module for talking to the Bible",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "data"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest"
+  },
+  "keywords": [
+    "bible",
+    "chat",
+    "spiritual",
+    "ai",
+    "openai"
+  ],
+  "author": "BibleChat",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.20.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/node": "^20.0.0",
+    "rollup": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "tslib": "^2.6.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "openai": "^4.20.0"
+  }
+}

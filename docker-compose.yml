@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: biblechat-api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=postgresql://postgres:password@db:5432/biblechat
+      - REDIS_URL=redis://cache:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+    depends_on:
+      - db
+      - cache
+    networks:
+      - biblechat-network
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+  
+  db:
+    image: postgres:15-alpine
+    container_name: biblechat-db
+    environment:
+      - POSTGRES_DB=biblechat
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/data/loaders/migrate.ts:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - biblechat-network
+    restart: unless-stopped
+  
+  cache:
+    image: redis:7-alpine
+    container_name: biblechat-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - biblechat-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Optional: pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: biblechat-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@biblechat.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    networks:
+      - biblechat-network
+    depends_on:
+      - db
+    restart: unless-stopped
+
+networks:
+  biblechat-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:

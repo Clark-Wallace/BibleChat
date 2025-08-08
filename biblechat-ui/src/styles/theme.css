@@ -1,0 +1,291 @@
+/* Illuminated Sanctuary Theme */
+:root {
+  /* Primary Colors */
+  --primary-gold: #ffd700;
+  --primary-gold-light: #ffed4e;
+  --primary-purple: #8a2be2;
+  --primary-blue: #1e90ff;
+  
+  /* Background Gradients */
+  --bg-dark: linear-gradient(180deg, #0a0a0f 0%, #0f0f19 100%);
+  --bg-sanctuary: linear-gradient(180deg, rgba(10, 10, 15, 0.98) 0%, rgba(15, 15, 25, 0.98) 100%);
+  --bg-divine-glow: radial-gradient(circle at center, rgba(255, 215, 0, 0.1), transparent);
+  
+  /* Stained Glass Effects */
+  --stained-glass: 
+    radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(30, 144, 255, 0.1) 0%, transparent 70%);
+  
+  /* Text Colors */
+  --text-divine: #ffd700;
+  --text-holy: rgba(255, 223, 186, 0.9);
+  --text-scripture: rgba(200, 200, 255, 0.7);
+  --text-light: rgba(255, 255, 255, 0.9);
+  
+  /* Border & Accent Colors */
+  --border-divine: linear-gradient(180deg, rgba(255, 215, 0, 0.3), rgba(138, 43, 226, 0.3), rgba(30, 144, 255, 0.3));
+  --border-gold: rgba(255, 215, 0, 0.3);
+  --glow-gold: 0 0 20px rgba(255, 215, 0, 0.5);
+  --glow-purple: 0 0 30px rgba(138, 43, 226, 0.3);
+  
+  /* Typography */
+  --font-primary: 'Georgia', -apple-system, 'Segoe UI', serif;
+  --font-secondary: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Font Sizes */
+  --fs-xxl: 28px;
+  --fs-xl: 24px;
+  --fs-lg: 18px;
+  --fs-md: 15px;
+  --fs-sm: 13px;
+  --fs-xs: 11px;
+  
+  /* Font Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 20px;
+  --space-xl: 30px;
+  --space-xxl: 40px;
+  
+  /* Breakpoints */
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --wide: 1440px;
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-primary);
+  background: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--stained-glass);
+  pointer-events: none;
+  z-index: 1;
+  animation: shimmer 30s ease-in-out infinite;
+}
+
+#app {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Animations */
+@keyframes shimmer {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes rayMove {
+  0% { transform: translateY(-100vh) rotate(15deg); opacity: 0; }
+  10% { opacity: 0.1; }
+  90% { opacity: 0.1; }
+  100% { transform: translateY(100vh) rotate(15deg); opacity: 0; }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); }
+  50% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8)); }
+}
+
+@keyframes fadeInIlluminate {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Component Classes */
+.divine-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: var(--space-lg);
+  animation: fadeInIlluminate 0.5s ease-out;
+}
+
+.illuminated-container {
+  background: linear-gradient(180deg, rgba(10, 10, 15, 0.98), rgba(15, 15, 25, 0.98));
+  border: 2px solid;
+  border-image: var(--border-divine) 1;
+  border-radius: 12px;
+  padding: var(--space-xl);
+}
+
+.btn-divine {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.2));
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: var(--primary-gold);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 8px;
+  font-family: var(--font-secondary);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-divine:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 193, 7, 0.3));
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ffd700, #ffb300);
+  color: #1a1a2e;
+  font-weight: var(--fw-bold);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+}
+
+.input-divine {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(30, 144, 255, 0.05));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  padding: var(--space-md) var(--space-md);
+  color: var(--text-light);
+  font-family: var(--font-primary);
+  font-size: var(--fs-md);
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.input-divine:focus {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(30, 144, 255, 0.1));
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+  outline: none;
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+.input-divine::placeholder {
+  color: var(--text-scripture);
+  opacity: 0.7;
+}
+
+.holy-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.divine-message {
+  animation: fadeInIlluminate 0.5s ease-out;
+}
+
+.light-ray {
+  position: fixed;
+  width: 2px;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: rayMove 20s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.divine-border {
+  border: 2px solid;
+  border-image: linear-gradient(180deg, 
+    rgba(255, 215, 0, 0.3), 
+    rgba(138, 43, 226, 0.3), 
+    rgba(30, 144, 255, 0.3)) 1;
+}
+
+.prayer-card {
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 193, 7, 0.05));
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  border-radius: 8px;
+  padding: var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.prayer-card::before {
+  content: '🕊️';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 80px;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 15, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-gold), var(--primary-purple));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-gold-light), var(--primary-blue));
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

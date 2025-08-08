@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:3000';
-const API_KEY = 'dev_key_e0dfdd19d300428bae938459';
+const API_KEY = process.env.TEST_API_KEY || 'test-api-key-placeholder';
 
 describe('BibleChat API Integration Tests', () => {
   // Test if API is running

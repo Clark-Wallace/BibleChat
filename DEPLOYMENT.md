@@ -27,7 +27,7 @@ git push -u origin main
 3. **Set Environment Variables in Railway**
 Click on your service → Variables → Add these:
 ```
-DATABASE_URL=postgresql://postgres.clmzupqaqwrrrmilpsvp:35FSS!798Z7b2k!@aws-0-us-east-1.pooler.supabase.com:5432/postgres
+DATABASE_URL=your_database_url_from_supabase
 OPENAI_API_KEY=your_openai_key
 NODE_ENV=production
 PORT=3000
@@ -168,7 +168,7 @@ git push heroku main
 Create `.env.production`:
 ```
 VITE_API_URL=https://biblechat-api.up.railway.app/api/v1
-VITE_API_KEY=dev_key_e0dfdd19d300428bae938459
+VITE_API_KEY=your_api_key_here
 ```
 
 3. **Deploy**

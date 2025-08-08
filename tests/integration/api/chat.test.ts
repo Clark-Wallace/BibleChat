@@ -4,7 +4,7 @@ import { Application } from 'express';
 
 describe('Chat API Endpoints', () => {
   let app: Application;
-  const validApiKey = process.env.TEST_API_KEY || 'dev_key_e0dfdd19d300428bae938459';
+  const validApiKey = process.env.TEST_API_KEY || 'test-api-key-placeholder';
 
   beforeAll(async () => {
     const application = new App();

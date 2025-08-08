@@ -1,6 +1,6 @@
 // API Service for BibleChat
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1';
-const API_KEY = import.meta.env.VITE_API_KEY || 'dev_key_e0dfdd19d300428bae938459';
+const API_KEY = import.meta.env.VITE_API_KEY || 'your-api-key-here';
 
 interface ChatResponse {
   response: string;

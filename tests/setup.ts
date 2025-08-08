@@ -29,7 +29,7 @@ declare global {
   var testApiKey: string;
 }
 
-global.testApiKey = process.env.TEST_API_KEY || 'dev_key_e0dfdd19d300428bae938459';
+global.testApiKey = process.env.TEST_API_KEY || 'test-api-key-placeholder';
 
 // Increase timeout for integration tests
 if (process.env.TEST_TYPE === 'integration') {

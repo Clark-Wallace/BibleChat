@@ -2,15 +2,22 @@
 node_modules/
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
 
-# Environment variables
+# Environment variables - CRITICAL
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+*.env
+env.local
+env.production
+env.development
 
 # Build output
 dist/
 build/
+out/
+*.tsbuildinfo
 
 # Logs
 logs/
@@ -18,10 +25,13 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Testing
 coverage/
 .nyc_output/
+*.lcov
 
 # IDE
 .vscode/
@@ -30,15 +40,46 @@ coverage/
 *.swo
 *~
 .DS_Store
+Thumbs.db
 
 # Database
 *.sqlite
 *.sqlite3
 *.db
+dump.rdb
 
 # Temporary files
 tmp/
 temp/
+.cache/
 
 # Docker
 docker-compose.override.yml
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# API Keys and Secrets - NEVER COMMIT
+*.key
+*.pem
+*.cert
+*.crt
+secrets/
+credentials/
+
+# UI specific
+biblechat-ui/dist/
+biblechat-ui/.svelte-kit/
+biblechat-ui/build/
+biblechat-ui/.env
+biblechat-ui/.env.*
+biblechat-ui/node_modules/
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
